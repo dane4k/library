@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Мини Библиотека</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<div class="container">
+    <h1>Добро пожаловать в Мини Библиотеку</h1>
+    <div class="button-container">
+        <a class="button" th:href="@{/books}">Книги</a>
+        <a class="button" th:href="@{/borrowings}">Заимствования</a>
+        <a class="button" th:href="@{/readers}">Читатели</a>
+        <a class="button" th:href="@{/categories}">Категории</a>
+    </div>
+</div>
+</body>
+</html>
