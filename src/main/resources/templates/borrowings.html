@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Заимствования</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/pages.css}">
+</head>
+<body>
+<a href="/index" class="btn-main">На главную</a>
+
+<div class="container">
+    <h1>Заимствования</h1>
+
+    <button class="toggle-form" onclick="toggleForm()">Добавить</button>
+
+    <form action="/borrowings" method="POST" class="borrowing-form" id="borrowingForm">
+        <select name="readerId" required>
+            <option value="">Выберите читателя</option>
+            <th:block th:each="reader : ${readers}">
+                <option th:value="${reader.id}" th:text="${reader.email}"></option>
+            </th:block>
+        </select>
+
+        <select name="bookId" required>
+            <option value="">Выберите книгу</option>
+            <th:block th:each="book : ${books}">
+                <option th:value="${book.id}" th:text="${book.title}"></option>
+            </th:block>
+        </select>
+
+        <button type="submitAdd">Добавить заимствование книги</button>
+    </form>
+
+    <table>
+        <thead>
+        <tr>
+            <th>E-mail читателя</th>
+            <th>Название книги</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="borrowing : ${borrowings}">
+            <td th:text="${borrowing.reader.email}"></td>
+            <td th:text="${borrowing.book.title}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<script>
+    function toggleForm() {
+        const form = document.getElementById('borrowingForm');
+        if (form.style.maxHeight) {
+            form.style.maxHeight = null;
+            form.style.opacity = 0;
+        } else {
+            form.style.maxHeight = form.scrollHeight + "px";
+            form.style.opacity = 1;
+        }
+    }
+</script>
+</body>
+</html>

@@ -2,18 +2,37 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Мини Библиотека</title>
-    <link rel="stylesheet" href="/css/styles.css">
-</head>
+    <title>Библиотека</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
+    <link rel="icon" href="../static/images/favicon.png" type="image/png">
+
 <body>
+
 <div class="container">
-    <h1>Добро пожаловать в Мини Библиотеку</h1>
+    <h1>Библиотека</h1>
+    <h2>Выберите раздел</h2>
     <div class="button-container">
         <a class="button" th:href="@{/books}">Книги</a>
         <a class="button" th:href="@{/borrowings}">Заимствования</a>
         <a class="button" th:href="@{/readers}">Читатели</a>
         <a class="button" th:href="@{/categories}">Категории</a>
     </div>
+    <button class="info-button">Об авторе</button>
+    <div class="popup-menu">
+        <p>Соболев Даниил</p>
+    </div>
 </div>
+<script>
+    const button = document.querySelector('.info-button');
+    const popup = document.querySelector('.popup-menu');
+
+    button.addEventListener('mouseover', () => {
+        popup.style.display = 'block';
+    });
+
+    button.addEventListener('mouseout', () => {
+        popup.style.display = 'none';
+    });
+</script>
 </body>
 </html>

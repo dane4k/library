@@ -1,0 +1,133 @@
+body {
+    font-family: Verdana, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    background-image: url('../images/pagesBackground.jpg');
+}
+
+.container {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #1e1e1e;
+}
+
+.borrowing-form,
+.reader-form,
+.category-form,
+.book-form {
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 1s ease, opacity 1s ease;
+    overflow: hidden;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.borrowing-form input,
+.borrowing-form select,
+.reader-form input,
+.category-form input,
+.book-form input,
+.book-form select {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin: 5px 0 5px 10px;
+}
+
+button[type="submitDelete"],
+button[type="submitAdd"],
+.toggle-form {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button[type="submitDelete"] {
+    background-color: #cc0000;
+    color: white;
+    width: 70px;
+}
+
+button[type="submitAdd"] {
+    margin-left: 45px;
+    margin-top: 10px;
+    background-color: #017d3a;
+    color: white;
+}
+
+button[type="submitAdd"]:hover {
+    background-color: #01401b;
+}
+
+
+button[type="submitDelete"]:hover,
+.toggle-form:hover {
+    background-color: #880404;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 50px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+.toggle-form {
+    margin-right: 10px;
+    background-color: #007bff;
+    color: white;
+    margin-bottom: 20px;
+    margin-left: 10px;
+}
+
+.toggle-form:hover {
+    background-color: #053f83;
+}
+
+
+.btn-main {
+    border: none;
+    border-radius: 30px;
+    text-decoration: none;
+    color: white;
+    background: #c800fb;
+    box-shadow: 0 5px 0 #2b0202;
+    margin-left: 150px;
+    margin-top: 150px;
+    font-family: "Bell MT", sans-serif;
+    font-size: 18px;
+    padding: 10px 20px;
+    display: inline-block;
+    float: left;
+}
+
+.btn-main:hover {
+    background: #470101;
+    box-shadow: none;
+    position: relative;
+    top: 5px;
+}
