@@ -1,12 +1,11 @@
 package org.example.library.models;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
-import java.time.LocalDate;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "borrowings")
 public class Borrowing {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,7 +20,7 @@ public class Borrowing {
     private Reader reader;
 
 
-    private LocalDate borrowDate;
+    private LocalDateTime borrowDate;
     private boolean borrowed;
 
 
@@ -50,11 +49,11 @@ public class Borrowing {
         this.reader = reader;
     }
 
-    public LocalDate getBorrowDate() {
+    public LocalDateTime getBorrowDate() {
         return borrowDate;
     }
 
-    public void setBorrowDate(LocalDate borrowDate) {
+    public void setBorrowDate(LocalDateTime borrowDate) {
         this.borrowDate = borrowDate;
     }
 

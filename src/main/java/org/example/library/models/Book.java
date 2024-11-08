@@ -5,16 +5,16 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name = "books")
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private int remaining;
     private String author;
 
     @ManyToOne
-    @JoinColumn(name="category_id")
+    @JoinColumn(name = "category_id")
     private Category category;
 
     private String title;
@@ -32,13 +32,6 @@ public class Book {
         this.id = id;
     }
 
-    public int getRemaining() {
-        return remaining;
-    }
-
-    public void setRemaining(int remaining) {
-        this.remaining = remaining;
-    }
 
     public String getAuthor() {
         return author;
