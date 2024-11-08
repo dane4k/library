@@ -3,3 +3,11 @@
 
 ### ER-диаграмма базы данных
 <img src="er-db-diagram.png">
+
+
+### Главная страница
+<img src="main.png">
+
+### Страница добавления книги
+<img src="books.png">
+
