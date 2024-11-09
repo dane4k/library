@@ -30,7 +30,13 @@
     <table>
         <thead>
         <tr>
-            <th>Название</th>
+            <th class="${direction == 'asc' ? 'sorted-asc' : 'sorted-desc'}">
+                <a th:href="@{/books(sort='title', direction=${direction == 'asc' ? 'desc' : 'asc'})}">
+                    Название
+                    <span class="sort-arrow" th:if="${direction == 'asc'}">▲</span>
+                    <span class="sort-arrow" th:if="${direction == 'desc'}">▼</span>
+                </a>
+            </th>
             <th>Автор</th>
             <th>Год издания</th>
             <th>Категория</th>

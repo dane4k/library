@@ -6,6 +6,7 @@ import org.example.library.models.Category;
 import org.example.library.repositories.BookRepository;
 import org.example.library.repositories.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -34,12 +35,22 @@ public class BookController {
     }
 
     @GetMapping
-    public String printBooks(Model model) {
+    public String printBooks(Model model, @RequestParam(defaultValue = "title") String sort,
+                             @RequestParam(defaultValue = "asc") String direction) {
+        List<Book> books;
+        if ("desc".equalsIgnoreCase(direction)) {
+            books = bookRepository.findAll(Sort.by(Sort.Direction.DESC, sort));
+        } else {
+            books = bookRepository.findAll(Sort.by(Sort.Direction.ASC, sort));
+        }
+
         List<Category> categories = categoryRepository.findAll();
-        System.out.println("Categories: " + categories);
-        model.addAttribute("books", bookRepository.findAll());
+        model.addAttribute("books", books);
         model.addAttribute("book", new Book());
         model.addAttribute("categories", categories);
+        model.addAttribute("sort", sort);
+        model.addAttribute("direction", direction);
+
         return "books";
     }
 

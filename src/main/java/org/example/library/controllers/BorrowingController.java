@@ -8,6 +8,7 @@ import org.example.library.repositories.BookRepository;
 import org.example.library.repositories.BorrowingRepository;
 import org.example.library.repositories.ReaderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -42,11 +43,16 @@ public class BorrowingController {
     }
 
     @GetMapping
-    public String printBorrowings(Model model) {
-        model.addAttribute("borrowings", borrowingRepository.findAll());
+    public String printBorrowings(@RequestParam(required = false, defaultValue = "asc") String sort, Model model) {
+        Sort sortOrder = Sort.by("borrowed");
+        if ("desc".equals(sort)) {
+            sortOrder = sortOrder.descending();
+        }
+        model.addAttribute("borrowings", borrowingRepository.findAll(sortOrder));
         model.addAttribute("readers", readerRepository.findAll());
         model.addAttribute("books", bookRepository.findAll());
         model.addAttribute("borrowing", new Borrowing());
+        model.addAttribute("direction", sort);
         return "borrowings";
     }
 

@@ -4,6 +4,7 @@ package org.example.library.controllers;
 import org.example.library.models.Reader;
 import org.example.library.repositories.ReaderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -17,9 +18,14 @@ public class ReaderController {
     private ReaderRepository readerRepository;
 
     @GetMapping
-    public String printReaders(Model model) {
-        model.addAttribute("readers", readerRepository.findAll());
+    public String printReaders(@RequestParam(required = false, defaultValue = "asc") String sort, Model model) {
+        Sort sortOrder = Sort.by("firstName");
+        if ("desc".equals(sort)) {
+            sortOrder = sortOrder.descending();
+        }
+        model.addAttribute("readers", readerRepository.findAll(sortOrder));
         model.addAttribute("reader", new Reader());
+        model.addAttribute("direction", sort);
         return "readers";
     }
 

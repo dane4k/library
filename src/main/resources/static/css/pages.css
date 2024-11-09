@@ -100,6 +100,8 @@ table, th, td {
 
 th {
     background-color: #f2f2f2;
+    cursor: pointer;
+    position: relative
 }
 
 tr:hover {
@@ -163,4 +165,42 @@ button[type="submitEdit"] {
 button[type="submitEdit"]:hover {
     background-color: #888888;
     cursor: pointer;
+}
+
+th a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+}
+
+th a:hover {
+    background-color: #e0e0e0;
+    border-radius: 4px;
+}
+
+th {
+    background-color: #f2f2f2;
+    cursor: pointer;
+    position: relative;
+}
+
+.sort-arrow {
+    margin-left: 5px;
+    font-size: 0.8em;
+    color: #007bff;
+}
+
+th.sorted-asc .sort-arrow {
+    content: "▲";
+}
+
+th.sorted-desc .sort-arrow {
+    content: "▼";
+}
+
+th:hover {
+    background-color: #e0e0e0;
 }

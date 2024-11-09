@@ -37,7 +37,13 @@
         <tr>
             <th>E-mail читателя</th>
             <th>Название книги</th>
-            <th>Действие</th>
+            <th>
+                <a th:href="@{/borrowings(sort=${direction == 'asc' ? 'desc' : 'asc'})}">
+                    Действие
+                    <span class="sort-arrow" th:if="${direction == 'asc'}">▲</span>
+                    <span class="sort-arrow" th:if="${direction == 'desc'}">▼</span>
+                </a>
+            </th>
         </tr>
         </thead>
         <tbody>
