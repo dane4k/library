@@ -75,5 +75,15 @@ public class BorrowingController {
         borrowingRepository.deleteById(id);
         return "redirect:/borrowings";
     }
+
+    @PostMapping("/return/{id}")
+    public String returnBorrowing(@PathVariable Long id) {
+        Borrowing borrowing = borrowingRepository.findById(id).orElse(null);
+        if (borrowing != null) {
+            borrowing.setBorrowed(false);
+            borrowingRepository.save(borrowing);
+        }
+        return "redirect:/borrowings";
+    }
 }
 

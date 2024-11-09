@@ -44,6 +44,9 @@
                 <form action="/readers/delete/{id}" method="POST" th:action="@{/readers/delete/{id}(id=${reader.id})}">
                     <button type="submitDelete">Удалить</button>
                 </form>
+                <form action="#" th:action="@{/readers/edit/{id}(id=${reader.id})}" method="GET">
+                    <button type="submitEdit">Изменить</button>
+                </form>
             </td>
         </tr>
         </tbody>

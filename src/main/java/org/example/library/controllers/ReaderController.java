@@ -34,4 +34,18 @@ public class ReaderController {
         readerRepository.deleteById(id);
         return "redirect:/readers";
     }
+
+    @GetMapping("/edit/{id}")
+    public String editReader(@PathVariable Long id, Model model) {
+        Reader reader = readerRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid reader Id:" + id));
+        model.addAttribute("reader", reader);
+        return "edit_reader";
+    }
+
+    @PostMapping("/edit/{id}")
+    public String updateReader(@PathVariable Long id, @ModelAttribute Reader reader) {
+        reader.setId(id);
+        readerRepository.save(reader);
+        return "redirect:/readers";
+    }
 }

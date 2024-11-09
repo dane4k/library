@@ -37,12 +37,23 @@
         <tr>
             <th>E-mail читателя</th>
             <th>Название книги</th>
+            <th>Действие</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="borrowing : ${borrowings}">
+        <tr th:each="borrowing : ${borrowings}" th:class="${borrowing.borrowed} ? 'borrowed' : 'returned'">
             <td th:text="${borrowing.reader.email}"></td>
             <td th:text="${borrowing.book.title}"></td>
+            <td>
+                <div th:if="${borrowing.borrowed}">
+                    <form th:action="@{/borrowings/return/{id}(id=${borrowing.id})}" method="POST">
+                        <button type="submitReturn">Книга возвращена</button>
+                    </form>
+                </div>
+                <div th:if="${!borrowing.borrowed}">
+                    <span>Книга возвращена</span>
+                </div>
+            </td>
         </tr>
         </tbody>
     </table>

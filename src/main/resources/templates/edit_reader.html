@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Редактировать читателя</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/pages.css}">
+</head>
+<body>
+<a href="/readers" class="btn-main">Назад к читателям</a>
+
+<div class="container">
+    <h1>Редактировать читателя</h1>
+
+    <form th:action="@{/readers/edit/{id}(id=${reader.id})}" method="POST" class="edit-form" id="editForm">
+        <input type="text" name="firstName" placeholder="Имя" required th:value="${reader.firstName}">
+        <input type="text" name="lastName" placeholder="Фамилия" required th:value="${reader.lastName}">
+        <input type="tel" name="phoneNumber" placeholder="+7 (999) 999-99-99" required pattern="^\+?[0-9]+$" th:value="${reader.phoneNumber}">
+        <input type="email" id="email" name="email" placeholder="example@example.ru" required
+               pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" th:value="${reader.email}">
+        <button type="editPOST">Сохранить изменения</button>
+    </form>
+</div>
+</body>
+</html>

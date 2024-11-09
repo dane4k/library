@@ -2,6 +2,7 @@ package org.example.library.models;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -23,6 +24,9 @@ public class Book {
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Borrowing> borrowingList;
 
+    public Book() {
+        this.borrowingList = new ArrayList<>();
+    }
 
     public Long getId() {
         return id;

@@ -32,6 +32,7 @@ h1 {
     margin-bottom: 20px;
 }
 
+.edit-form input,
 .borrowing-form input,
 .borrowing-form select,
 .reader-form input,
@@ -44,6 +45,12 @@ h1 {
     margin: 5px 0 5px 10px;
 }
 
+.edit-form input {
+    margin-left: 0;
+}
+
+button[type="editPOST"],
+button[type="submitReturn"],
 button[type="submitDelete"],
 button[type="submitAdd"],
 .toggle-form {
@@ -53,12 +60,14 @@ button[type="submitAdd"],
     cursor: pointer;
 }
 
+
 button[type="submitDelete"] {
     background-color: #cc0000;
     color: white;
-    width: 70px;
+    width: 75px;
 }
-
+button[type="editPOST"],
+button[type="submitReturn"],
 button[type="submitAdd"] {
     margin-left: 45px;
     margin-top: 10px;
@@ -66,6 +75,7 @@ button[type="submitAdd"] {
     color: white;
 }
 
+button[type="editPOST"]:hover,
 button[type="submitAdd"]:hover {
     background-color: #01401b;
 }
@@ -130,4 +140,27 @@ tr:hover {
     box-shadow: none;
     position: relative;
     top: 5px;
+}
+
+.borrowed {
+    background-color: #ffcccc;
+}
+
+.returned {
+    background-color: #ccffcc;
+}
+
+button[type="submitEdit"] {
+    background-color: #e7e7e7;
+    color: black;
+    width: 75px;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    margin-top: 5px;
+}
+
+button[type="submitEdit"]:hover {
+    background-color: #888888;
+    cursor: pointer;
 }
