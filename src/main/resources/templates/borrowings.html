@@ -64,6 +64,9 @@
                 <form action="#" th:action="@{/borrowings/edit/{id}(id=${borrowing.id})}" method="GET">
                     <button type="submitEdit">Изменить</button>
                 </form>
+                <form action="/borrowings/delete/{id}" method="POST" th:action="@{/borrowings/delete/{id}(id=${borrowing.id})}">
+                    <button type="submitDelete">Удалить</button>
+                </form>
             </td>
         </tr>
         </tbody>
