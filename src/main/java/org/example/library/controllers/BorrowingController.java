@@ -91,5 +91,33 @@ public class BorrowingController {
         }
         return "redirect:/borrowings";
     }
+
+    @GetMapping("/edit/{id}")
+    public String editBorrowing(@PathVariable Long id, Model model) {
+        Borrowing borrowing = borrowingRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid borrowing Id:" + id));
+        model.addAttribute("borrowing", borrowing);
+        model.addAttribute("readers", readerRepository.findAll());
+        model.addAttribute("books", bookRepository.findAll());
+
+        return "edit_borrowing";
+    }
+
+    @PostMapping("/edit/{id}")
+    public String updateBorrowing(@PathVariable Long id, @RequestParam Long readerId, @RequestParam Long bookId, @RequestParam(required = false) boolean borrowedFlag) {
+        Borrowing borrowing = borrowingRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Неверное заимствование:" + id));
+        Reader reader = readerRepository.findById(readerId).orElse(null);
+        Book book = bookRepository.findById(bookId).orElse(null);
+
+        if (reader != null && book != null) {
+            borrowing.setReader(reader);
+            borrowing.setBook(book);
+            borrowing.setBorrowed(borrowedFlag);
+
+            borrowingRepository.save(borrowing);
+        }
+
+        return "redirect:/borrowings";
+    }
+
 }
 

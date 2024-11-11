@@ -37,6 +37,7 @@
         <tr>
             <th>E-mail читателя</th>
             <th>Название книги</th>
+            <th>Дата</th>
             <th>
                 <a th:href="@{/borrowings(sort=${direction == 'asc' ? 'desc' : 'asc'})}">
                     Действие
@@ -50,6 +51,7 @@
         <tr th:each="borrowing : ${borrowings}" th:class="${borrowing.borrowed} ? 'borrowed' : 'returned'">
             <td th:text="${borrowing.reader.email}"></td>
             <td th:text="${borrowing.book.title}"></td>
+            <td th:text="${borrowing.timeToStringRepr()}"></td>
             <td>
                 <div th:if="${borrowing.borrowed}">
                     <form th:action="@{/borrowings/return/{id}(id=${borrowing.id})}" method="POST">
@@ -59,6 +61,9 @@
                 <div th:if="${!borrowing.borrowed}">
                     <span>Книга возвращена</span>
                 </div>
+                <form action="#" th:action="@{/borrowings/edit/{id}(id=${borrowing.id})}" method="GET">
+                    <button type="submitEdit">Изменить</button>
+                </form>
             </td>
         </tr>
         </tbody>

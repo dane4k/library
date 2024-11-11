@@ -45,6 +45,14 @@ h1 {
     margin: 5px 0 5px 10px;
 }
 
+select {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin: 5px 0 5px 10px;
+}
+
+
 .edit-form input {
     margin-left: 0;
 }
@@ -66,14 +74,20 @@ button[type="submitDelete"] {
     color: white;
     width: 75px;
 }
+
 button[type="editPOST"],
 button[type="submitReturn"],
 button[type="submitAdd"] {
-    margin-left: 45px;
+    margin-left: 0px;
     margin-top: 10px;
     background-color: #017d3a;
     color: white;
 }
+
+button[type="submitReturn"] {
+    margin-left: 0;
+}
+
 
 button[type="editPOST"]:hover,
 button[type="submitAdd"]:hover {

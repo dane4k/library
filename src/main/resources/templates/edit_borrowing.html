@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Редактировать заимствование</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/pages.css}">
+</head>
+<body>
+<a href="/borrowings" class="btn-main">Назад к Заимствованиям</a>
+
+<div class="container">
+    <h1>Редактировать заимствование</h1>
+
+    <form th:action="@{/borrowings/edit/{id}(id=${borrowing.id})}" method="POST" class="edit-form" id="editForm">
+        <select name="readerId" id="readerId" required>
+            <option value="">Выберите читателя</option>
+            <th:block th:each="reader : ${readers}">
+                <option th:value="${reader.id}"
+                        th:text="${reader.email}"
+                        th:selected="${borrowing.reader.id == reader.id}"></option>
+            </th:block>
+        </select>
+
+        <select name="bookId" id="bookId" required>
+            <option value="">Выберите книгу</option>
+            <th:block th:each="book : ${books}">
+                <option th:value="${book.id}"
+                        th:text="${book.title}"
+                        th:selected="${borrowing.book.id == book.id}"></option>
+            </th:block>
+        </select>
+        <!--        <input type="text" name="borrowDate" placeholder="dd/MM/yyyy HH:mm" required-->
+        <!--               pattern="^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/[0-9]{4} (0[0-9]|1[0-9]|2[0-3]):([0-5][0-9])$"-->
+        <!--               title="Введите дату в формате: dd/MM/yyyy HH:mm" th:value="${borrowing.getBorrowDate().format(DateTimeFormatter.ofPattern('dd/MM/yyyy HH:mm'))}">-->
+        <!--
+        ПРОБЛЕМЫ С ИМПЛЕМЕНТИРОВАНИЕМ ИЗМЕНЕНИЯ ДАТЫ
+        -->
+        <input type="checkbox" class="borrowedCheckBox" name="borrowedFlag" id="borrowedFlag"
+               th:checked="${borrowing.borrowed}">
+        <label for="borrowedFlag">Заимствована</label>
+        <button type="submit">Сохранить изменения</button>
+    </form>
+</div>
+</body>
+</html>

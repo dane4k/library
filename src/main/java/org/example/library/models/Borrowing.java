@@ -1,8 +1,11 @@
 package org.example.library.models;
 
 import jakarta.persistence.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 @Entity
 @Table(name = "borrowings")
@@ -19,8 +22,8 @@ public class Borrowing {
     @JoinColumn(name = "reader_id")
     private Reader reader;
 
-
     private LocalDateTime borrowDate;
+
     private boolean borrowed;
 
 
@@ -32,6 +35,10 @@ public class Borrowing {
         this.id = id;
     }
 
+    public String timeToStringRepr() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d MMMM yyyy HH:mm:ss", new Locale("ru"));
+        return this.borrowDate.format(formatter);
+    }
 
     public Book getBook() {
         return book;
