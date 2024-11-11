@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS categories CASCADE;
+DROP TABLE IF EXISTS categories CASCADE; -- для тестов/многочисленных запусков
 DROP TABLE IF EXISTS books CASCADE;
 DROP TABLE IF EXISTS borrowings CASCADE;
 DROP TABLE IF EXISTS readers CASCADE;
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS borrowings (
     borrowed BOOLEAN NOT NULL
 );
 
-DELETE FROM books;
+DELETE FROM books; -- для тестов/многочисленных запусков
 DELETE FROM readers;
 DELETE FROM categories;
 
